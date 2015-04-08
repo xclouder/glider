@@ -77,12 +77,12 @@ DynamicUI/
 　　Resources/  
 　　　　UIDescriptions/  
 　　　　　　MazeUI.txt  
-　　UIPrefabs/  
-　　　　Maze/  
-　　　　　　HpDisplayPanel.prefab  
-　　　　　　BagPanel.prefab  
-　　　　　　MazeCanvasWrapper.prefab  
-　　　　　　......  
+　　　　UIPrefabs/  
+　　　　　　Maze/  
+　　　　　　　　HpDisplayPanel.prefab  
+　　　　　　　　BagPanel.prefab  
+　　　　　　　　MazeCanvasWrapper.prefab  
+　　　　　　　　......  
 
 
 #示例
