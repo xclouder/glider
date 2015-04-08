@@ -1,0 +1,10 @@
+{
+	"Prefab": "TextPanel",
+	"CanvasPrefab" : "UICanvasWrapper",
+	"Children" : [
+		
+		{
+			"Prefab" : "Panel"
+		}
+	]
+}
