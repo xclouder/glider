@@ -67,20 +67,21 @@ UI管理器，实现IDynamicModule接口，在SceneController中作为一个默�
 
 这个配置将会解析成UIDescription对象，里面的UI节点会解析成UINode对象。UINode代表的UIPrefab默认会被加载到父节点中。
 
-UIModuleManager加载UI时，有一些约定：
+UIModuleManager加载UI时，有一些约定：  
+
 1. 制作UIPrefab的粒度，建议控制在Panel层面。例如一个弹窗界面，按钮、标题、文字内容等逻辑比较相关，做成一个Prefab会方便不少，虽然Glider能够支持更细的粒度(如果你不嫌麻烦的话)。
 
-2. 目录约定。UIPrefabs需要放到"Resources/UIPrefabs/"目录下，UI配置文件需要放在"Resources/UIPrefabs/"目录下。例如：
-DynamicUI/
-　　Resources/
-　　　　UIDescriptions/
-　　　　　　MazeUI.txt
-　　UIPrefabs/
-　　　　Maze/
-　　　　　　HpDisplayPanel.prefab
-　　　　　　BagPanel.prefab
-　　　　　　MazeCanvasWrapper.prefab
-　　　　　　......
+2. 目录约定。UIPrefabs需要放到"Resources/UIPrefabs/"目录下，UI配置文件需要放在"Resources/UIPrefabs/"目录下。例如：  
+DynamicUI/  
+　　Resources/  
+　　　　UIDescriptions/  
+　　　　　　MazeUI.txt  
+　　UIPrefabs/  
+　　　　Maze/  
+　　　　　　HpDisplayPanel.prefab  
+　　　　　　BagPanel.prefab  
+　　　　　　MazeCanvasWrapper.prefab  
+　　　　　　......  
 
 
 #示例
