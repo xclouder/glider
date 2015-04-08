@@ -38,7 +38,7 @@ Glider使用**动态加载**的思想来解决如上问题，不同人员可以�
 UI管理器，实现IDynamicModule接口，在SceneController中作为一个默认的模块加载。
 
 #如何使用动态UI
-加载一个动态UI，可以使用SceneController.LoadUI(string uiDesFilePath)方法，其中uiDesFilePath指向的是UI描述的配置，其内容如下：
+加载一个动态UI，可以使用SceneController.LoadUIWithDescription(string uiDesFilePath)方法，其中uiDesFilePath指向的是UI描述的配置，其内容如下：
 
 文件：MazeUI.txt
 ```
