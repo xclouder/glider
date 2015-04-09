@@ -70,7 +70,7 @@ UI管理器，实现IDynamicModule接口，在SceneController中作为一个默�
 
 UIModuleManager加载UI时，有一些约定：  
 
-1. 制作UIPrefab的粒度，建议控制在Panel层面。例如一个弹窗界面，按钮、标题、文字内容等逻辑比较相关，做成一个Prefab会方便不少，虽然Glider能够支持更细的粒度(如果你不嫌麻烦的话)。
+1. 制作UIPrefab的粒度，建议控制在Panel层面。例如一个弹窗界面，按钮、标题、文字内容等逻辑比较相关，做成一个Prefab会方便不少，虽然Glider能够支持更细的粒度(如果你有特殊需求的话)。
 
 2. 目录约定。UIPrefabs需要放到"Resources/UIPrefabs/"目录下，UI配置文件需要放在"Resources/UIPrefabs/"目录下。例如：  
 DynamicUI/  
