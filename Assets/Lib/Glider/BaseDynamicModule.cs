@@ -5,6 +5,11 @@ public abstract class BaseDynamicModule : IDynamicModule {
 
 	public abstract string GetModuleId();
 
+    public virtual void Init()
+    {
+
+    }
+
 	public virtual void OnRegister(DynamicModuleManager mgr)
 	{
 
@@ -14,4 +19,9 @@ public abstract class BaseDynamicModule : IDynamicModule {
 	{
 
 	}
+
+    public virtual void OnAllModuleInitDone(DynamicModuleManager mgr)
+    {
+
+    }
 }

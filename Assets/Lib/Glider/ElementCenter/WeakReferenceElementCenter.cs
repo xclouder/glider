@@ -38,4 +38,16 @@ public class WeakReferenceElementCenter : IElementCenter {
 		return elementDict[key].Target as Object;
 	}
 
+    public T Get<T>(string key)
+    {
+        var obj = Get(key);
+
+        if (obj is T) {
+            return (T)System.Convert.ChangeType(obj, typeof(T));
+        } else {
+            Debug.LogError("element for key:" + key + " got a type:" + obj.GetType().ToString() + " but you need type:" + typeof(T).ToString());
+            return default(T);
+        }
+    }
+
 }

@@ -19,8 +19,10 @@ public class UIModuleManager : BaseDynamicModule {
 
 	}
 
-	public void Init()
+    public override void Init()
 	{
+        Debug.Log("Init UIModuleManager");
+
 		concreteUIManager = new UGuiUIManager();
 		concreteUIManager.Init();
 	}
@@ -121,21 +123,8 @@ public class UIModuleManager : BaseDynamicModule {
             Debug.LogError("prefabPath is null");
             return null;
         }
-		var prefab = LoadPrefab(prefabPath);
+        var prefab = U3DUtils.LoadPrefab(prefabPath);
 		return GameObject.Instantiate(prefab) as GameObject;
 	}
-
-	private static Dictionary<string,GameObject> _prefabsCacheDict= new Dictionary<string,GameObject>();
-	private static GameObject LoadPrefab(string prefabPath, bool useCache = false){
-		if(useCache && _prefabsCacheDict.ContainsKey(prefabPath)){
-			return _prefabsCacheDict[prefabPath];
-		}else{
-            Debug.Log("load prefab:" + prefabPath);
-			GameObject newObj = Resources.Load<GameObject> (prefabPath);
-			if(useCache) _prefabsCacheDict.Add(prefabPath, newObj);
-			return newObj;
-		}
-	}
-
 
 }

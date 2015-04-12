@@ -31,6 +31,8 @@ public class DynamicModuleManager {
             return;
         }
 
+        Debug.Log("Registering module:" + module.GetModuleId());
+
         //notify other modules
         foreach (var kvp in moduleDict)
         {
@@ -42,6 +44,11 @@ public class DynamicModuleManager {
 
         //notify registered
         module.OnRegister(this);
+    }
+
+    public ICollection<IDynamicModule> GetAllModules()
+    {
+        return moduleDict.Values;
     }
 
 

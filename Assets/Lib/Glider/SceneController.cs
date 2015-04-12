@@ -1,33 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SceneController : MonoBehaviour {
 
     private static string SCENE_CONTROLLER_NAME = "SceneController";
+
+    public string UIName;
 
     public static SceneController Current
     {
         get {
             var go = GameObject.FindObjectOfType(typeof(SceneController)) as SceneController;//GameObject.FindWithTag(SCENE_CONTROLLER_NAME);
 
-
-            return go;//.GetComponent<SceneController>();
+            return go;
         }
     }
 
-	private SceneController()
-	{
-		
-	}
-
-    public static SceneController Create()
+    void Awake()
     {
-        var go = new GameObject(SCENE_CONTROLLER_NAME);
-//        go.tag = SCENE_CONTROLLER_NAME;
-        var controller = go.AddComponent<SceneController>();
-        controller.Init();
-
-        return controller;
+        var s = GetComponent<SceneController>();
+        s.Init(UIName);
     }
 
     public IElementCenter ElementCenter {get {return elementCenter;}}
@@ -111,18 +104,34 @@ public class SceneController : MonoBehaviour {
 
 	}
 
-    public void Init()
+    public void Init(string uiDesPath = null)
     {
         SetupModuleManager();
 		elementCenter = new WeakReferenceElementCenter();
 
-		InitializeUI();
+        OnWillRegisterDynamicModule(ModuleManager);
+
+        ICollection<IDynamicModule> modules = this.ModuleManager.GetAllModules();
+        foreach (var m in modules)
+        {
+            m.Init();
+        }
+
+        if (!string.IsNullOrEmpty(uiDesPath))
+        {
+            LoadUIWithDescription(uiDesPath);
+        }
+
+        foreach (var m in modules)
+        {
+            m.OnAllModuleInitDone(this.ModuleManager);
+        }
     }
 
-	private void InitializeUI()
-	{
-		UIManager.Init();
-	}
+    public virtual void OnWillRegisterDynamicModule(DynamicModuleManager mgr)
+    {
+
+    }
 
 	public UIModuleManager UIManager
 	{
@@ -131,16 +140,16 @@ public class SceneController : MonoBehaviour {
 
     private void SetupModuleManager()
     {
-        this.DynamicModuleManager = new DynamicModuleManager();
+        this.ModuleManager = new DynamicModuleManager();
 
 		//register common modules
 		var uiModule = new UIModuleManager();
-		Debug.Log("Registering module:" + uiModule.GetModuleId());
-        DynamicModuleManager.Register(uiModule);
+		
+        ModuleManager.Register(uiModule);
 		UIManager = uiModule;
     }
 
-    private DynamicModuleManager DynamicModuleManager
+    private DynamicModuleManager ModuleManager
     {
         get;set;
     }
