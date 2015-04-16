@@ -88,13 +88,7 @@ DynamicUI/
 #示例
 这里我们简单描述怎样通过配置来加载一个UI
 
-```
-void Awake()
-{
-    var c = SceneController.Create();
-    c.LoadUIWithDescription("MazeUI");
-}
-```
+在场景中创建一个EmptyObject，为其添加SceneController脚本，"UI Name"中填写"MazeUI"。
 
 在Resources/UIDescriptions/MazeUI.txt文件中，有如下内容
 ```
@@ -121,8 +115,9 @@ void Awake()
 }
 ```
 其中Prefab表示创建的UIPrefab位置，这是一个相对于Resources/UIPrefabs/ 的路径。
+运行场景，相应的UI加载到场景中。
 
-详情请参考Demo
+详情请参考仓库中的Demo
 
 #开源协议
 遵守MIT协议
